@@ -14,7 +14,7 @@ export const getProjects = async (req, res) => {
   export const getProject = async (req, res) => {
     try {
       const { id } = req.params;
-      const project = await Projects.findById(id);
+      const project = await Projects.find({projectId : id});
   
       if (project) {
         return res.json(project);
@@ -41,7 +41,7 @@ export const getProjects = async (req, res) => {
   export const updateProject = async (req, res) => {
     try {
       const { id } = req.params;
-      const project = await Projects.findByIdAndUpdate(id, req.body);
+      const project = await Projects.findOneAndUpdate({projectId : id}, req.body);
       res.status(201).json(project);
     } catch (error) {
       console.error(error);
@@ -52,7 +52,7 @@ export const getProjects = async (req, res) => {
   export const deleteProject = async (req, res) => {
     try {
       const { id } = req.params;
-      const deleted = await Projects.findByIdAndDelete(id);
+      const deleted = await Projects.find({projectId : id});
   
       if (deleted) {
         return res.status(200).send("Project removed from database");
