@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 const dataNASA = new Schema({
     projectId: { type: Number },
@@ -12,8 +12,6 @@ const dataNASA = new Schema({
     startMonth: { type: Number },
     endYear: { type: Number },
     endMonth: { type: Number }
-
-
 })
 
 export default mongoose.model('Projects', dataNASA)

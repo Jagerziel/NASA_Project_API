@@ -19,8 +19,14 @@ async function fetchAll() {
         //maps each object at specified url into an array
         idArray.map((projID) => fetch(`${process.env.API_URL20}${projID}${process.env.API_URL21}${process.env.API_KEY}`).then((r) => r.json()))
     )
+    
+    const resultsUpOneLvl = []
+    for (let i = 0; i < results.length; i++) {
+        resultsUpOneLvl.push(results[i].project)
+    }
+    
     //writes the file with all urls included within array
-    fs.writeFile('./db/NASA/data-ProjectData.json', JSON.stringify(results), (err) => {
+    fs.writeFile('./db/NASA/data-ProjectData.json', JSON.stringify(resultsUpOneLvl), (err) => {
         //error handling
         if (err) {
             console.log('Failed to write data')

@@ -5,13 +5,15 @@ import routes from "./routes/index.js";
 import dotenv from 'dotenv'
 dotenv.config()
 
+//variables
 const app = express();
 const PORT = process.env.PORT;
 
+//Uses
 app.use(express.json());
-
 app.use("/api", routes);
 
+//db connection
 db.on("connected", () => {
   console.clear();
   console.log("Connected to MongoDB");

@@ -1,3 +1,4 @@
+//imports
 import mongoose from 'mongoose'
 import db from '../db/connection.js'
 import data from '../db/NASA/data-ProjectData.json' assert { type: 'json' }
