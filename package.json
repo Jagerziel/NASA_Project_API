@@ -1,0 +1,22 @@
+{
+  "name": "unit_2_api_project_nasa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jagerziel/NASA_Project_API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jagerziel/NASA_Project_API/issues"
+  },
+  "homepage": "https://github.com/Jagerziel/NASA_Project_API#readme",
+  "type": "module"
+}
