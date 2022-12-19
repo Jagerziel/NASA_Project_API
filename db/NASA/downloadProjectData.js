@@ -12,13 +12,23 @@ for (let i = 0; i < dataProjId.length; i++) {
     idArray.push(dataProjId[i].projectId)
 }
 
-// Fetching and writing data from API
-for (let i = 0; i < idArray.length; i++) {
-    fetch(`${process.env.API_URL20}${idArray[i]}${process.env.API_URL21}${process.env.API_KEY}`)
-    .then(response => response.json() )
-    .then(data => {
-        fs.appendFileSync('./db/NASA/data-ProjectData.json', JSON.stringify(data))
+//Fetches all data to run async
+async function fetchAll() {
+    //promise all to ensure all objects are added to the array
+    const results = await Promise.all(
+        //maps each object at specified url to the array
+        idArray.map((url) => fetch(`${process.env.API_URL20}${url}${process.env.API_URL21}${process.env.API_KEY}`).then((r) => r.json()))
+    )
+    //writes the file with all urls included within array
+    fs.writeFile('./db/NASA/data-ProjectData.json', JSON.stringify(results), (err) => {
+        //error handling
+        if (err) {
+            console.log('Failed to write data')
+            return
+        }
+        //notifies upon successful write
+        console.log('Updated data file successfully')
     })
-}
+  }
 
-
+fetchAll()
