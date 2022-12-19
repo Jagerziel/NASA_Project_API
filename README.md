@@ -12,10 +12,16 @@ The API is available from https://api.nasa.gov/
 
 ## Technical Notes
 
+### Data
+1) Project ID
+2) Project Details
+
+*Note: Data is limited to the first 100 entries for this project*
 
 ### Dependencies
 
 - cors
+- dotenv
 - express
 - node-fetch
 - nodemon
