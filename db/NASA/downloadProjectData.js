@@ -17,7 +17,7 @@ for (let i = 0; i < idArray.length; i++) {
     fetch(`${process.env.API_URL20}${idArray[i]}${process.env.API_URL21}${process.env.API_KEY}`)
     .then(response => response.json() )
     .then(data => {
-        fs.writeFileSync('./db/NASA/data-ProjectData.json', JSON.stringify(data))
+        fs.appendFileSync('./db/NASA/data-ProjectData.json', JSON.stringify(data))
     })
 }
 
