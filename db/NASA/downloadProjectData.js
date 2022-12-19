@@ -16,8 +16,8 @@ for (let i = 0; i < dataProjId.length; i++) {
 async function fetchAll() {
     //promise all to ensure all objects are added to the array
     const results = await Promise.all(
-        //maps each object at specified url to the array
-        idArray.map((url) => fetch(`${process.env.API_URL20}${url}${process.env.API_URL21}${process.env.API_KEY}`).then((r) => r.json()))
+        //maps each object at specified url into an array
+        idArray.map((projID) => fetch(`${process.env.API_URL20}${projID}${process.env.API_URL21}${process.env.API_KEY}`).then((r) => r.json()))
     )
     //writes the file with all urls included within array
     fs.writeFile('./db/NASA/data-ProjectData.json', JSON.stringify(results), (err) => {
@@ -30,5 +30,5 @@ async function fetchAll() {
         console.log('Updated data file successfully')
     })
   }
-
+//calls function
 fetchAll()
