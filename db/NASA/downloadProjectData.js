@@ -24,26 +24,6 @@ async function fetchAll() {
     for (let i = 0; i < results.length; i++) {      
         resultsUpOneLvl.push(results[i].project)
     }
-    //scrubs data to remove null items
-    const scrubbedData = resultsUpOneLvl.filter((data)=>{
-        return data !== null
-    })
-    //amends the data to consolidate planet destinations
-    for (let j = 0; j < scrubbedData.length; j++) {
-        let exists = false
-        if (scrubbedData[j] !== undefined) {
-            exists = 'destination' in scrubbedData[j]
-        }
-        if (exists) {
-            scrubbedData[j].destinations = scrubbedData[j].destinations.map(item => {
-                item = {
-                    lkuCodeId : item.lkuCodeId,
-                    description : item.description
-                }
-                return item
-            })
-        } 
-    }
     //writes the file with all urls included within array
     fs.writeFile('./db/NASA/data-ProjectData.json', JSON.stringify(scrubbedData), (err) => {
         //error handling
