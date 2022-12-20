@@ -1,7 +1,10 @@
+//Import
 import mongoose from "mongoose";
 
+//Create Variables
 const Schema = mongoose.Schema;
 
+//Construct Schema
 const dataNASA = new Schema({
     projectId: { type: Number },
     title: { type: String },
@@ -14,4 +17,5 @@ const dataNASA = new Schema({
     endMonth: { type: Number }
 })
 
+//Export Model
 export default mongoose.model('Projects', dataNASA)

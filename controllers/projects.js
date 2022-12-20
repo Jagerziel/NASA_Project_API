@@ -1,6 +1,7 @@
+//Imports
 import Projects from '../models/ProjectModel.js'
 
-
+//Export GET Request for all Projects
 export const getProjects = async (req, res) => {
     try {
       const projects = await Projects.find();
@@ -11,6 +12,7 @@ export const getProjects = async (req, res) => {
     }
   };
   
+  //Export GET Request for a Single Project
   export const getProject = async (req, res) => {
     try {
       const { id } = req.params;
@@ -27,6 +29,7 @@ export const getProjects = async (req, res) => {
     }
   };
   
+  //Export a POST Request for a Single Project
   export const createProject = async (req, res) => {
     try {
       const project = new Projects(req.body);
@@ -38,6 +41,7 @@ export const getProjects = async (req, res) => {
     }
   };
   
+  //Export a PUT request for a Single Project
   export const updateProject = async (req, res) => {
     try {
       const { id } = req.params;
@@ -49,6 +53,7 @@ export const getProjects = async (req, res) => {
     }
   };
   
+  //Export a DELETE request for a Single Project
   export const deleteProject = async (req, res) => {
     try {
       const { id } = req.params;

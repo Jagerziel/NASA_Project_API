@@ -7,7 +7,9 @@ dotenv.config()
 
 //Fetching and writing data from API
 fetch(`${process.env.API_URL1}${process.env.API_KEY}`)
-.then(response => response.json() )
+//Convert Data to JavaScript
+.then(response => response.json())
+//Take only 100 Entries and Write File
 .then(data => {
     data = data.projects.slice(0, 100)
     console.log(data)
