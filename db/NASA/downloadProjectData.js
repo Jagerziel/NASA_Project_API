@@ -19,19 +19,23 @@ async function fetchAll() {
         //maps each object at specified url into an array
         idArray.map((projID) => fetch(`${process.env.API_URL20}${projID}${process.env.API_URL21}${process.env.API_KEY}`).then((r) => r.json()))
     )
-    
+    //removes unnecessary level of data
     const resultsUpOneLvl = []
     for (let i = 0; i < results.length; i++) {      
         resultsUpOneLvl.push(results[i].project)
     }
-
+    //scrubs data to remove null items
     const scrubbedData = resultsUpOneLvl.filter((data)=>{
         return data !== null
     })
-
+    //amends the data to consolidate planet destinations
     for (let j = 0; j < scrubbedData.length; j++) {
-        const exists = 'destinations' in scrubbedData[j]
+        console.log(scrubbedData[j])
+        let exists = false
         console.log(`Item ${j}: ${exists}`)
+        if (scrubbedData[j] !== undefined) {
+            exists = 'destination' in scrubbedData[j]
+        }
         if (exists) {
             console.log(`Item ${j} length: ${scrubbedData[j].destinations.length}`)
             scrubbedData[j].destinations = scrubbedData[j].destinations.map(item => {
@@ -43,7 +47,6 @@ async function fetchAll() {
             })
         } 
     }
-
     //writes the file with all urls included within array
     fs.writeFile('./db/NASA/data-ProjectDataTEST.json', JSON.stringify(scrubbedData), (err) => {
         //error handling

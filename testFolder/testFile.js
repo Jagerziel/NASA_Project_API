@@ -43,9 +43,9 @@ for (let j = 0; j < scrubbedData.length; j++) {
 }
 
 
-console.log(dataTest.length)
-console.log(scrubbedData.length)
-// console.log(scrubbedData[55])
+// console.log(dataTest.length)
+// console.log(scrubbedData.length)
+console.log(scrubbedData[27])
 
 // console.log(dataTest[55])
 // console.log(dataTest[56])
