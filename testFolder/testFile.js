@@ -18,3 +18,4 @@ import data from '../db/NASA/data-ProjectData.json' assert { type: "json" }
 
 console.log(data[1])
 // console.log(data[12].destinations.length)
+
