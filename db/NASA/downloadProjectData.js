@@ -25,17 +25,17 @@ async function fetchAll() {
         resultsUpOneLvl.push(results[i].project)
     }
 
-    // for (let j = 0; j < resultsUpOneLvl.length; j++) {
-    //     if (resultsUpOneLvl[j].destinations) {
-    //         resultsUpOneLvl[j].destinations = resultsUpOneLvl[j].destinations.map(item => {
-    //             item = {
-    //                 lkuCodeId : item.lkuCodeId,
-    //                 description : item.description
-    //             }
-    //             return item
-    //         })
-    //     }
-    // }
+    for (let j = 0; j < resultsUpOneLvl.length; j++) {
+        if (resultsUpOneLvl[j].destinations) {
+            resultsUpOneLvl[j].destinations = resultsUpOneLvl[j].destinations.map(item => {
+                item = {
+                    lkuCodeId : item.lkuCodeId,
+                    description : item.description
+                }
+                return item
+            })
+        }
+    }
     
     // for (let i = 0; i < results.length; i++) {      
     //     for (let j = 0; j < results[i].length; j++) {
@@ -59,7 +59,7 @@ async function fetchAll() {
 
 
     //writes the file with all urls included within array
-    fs.writeFile('./db/NASA/data-ProjectData.json', JSON.stringify(resultsUpOneLvl), (err) => {
+    fs.writeFile('./db/NASA/data-ProjectDataTEST.json', JSON.stringify(resultsUpOneLvl), (err) => {
         //error handling
         if (err) {
             console.log('Failed to write data')
