@@ -35,7 +35,6 @@ async function fetchAll() {
             exists = 'destination' in scrubbedData[j]
         }
         if (exists) {
-            console.log(`Item ${j} length: ${scrubbedData[j].destinations.length}`)
             scrubbedData[j].destinations = scrubbedData[j].destinations.map(item => {
                 item = {
                     lkuCodeId : item.lkuCodeId,

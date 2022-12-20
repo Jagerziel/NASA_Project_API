@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
-import Destination from './DestinationModel.js'
 
 const Schema = mongoose.Schema;
-const DestinationSchema = Destination
 
 const dataNASA = new Schema({
     projectId: { type: Number },
