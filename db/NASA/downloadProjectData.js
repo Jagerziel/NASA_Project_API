@@ -30,9 +30,7 @@ async function fetchAll() {
     })
     //amends the data to consolidate planet destinations
     for (let j = 0; j < scrubbedData.length; j++) {
-        console.log(scrubbedData[j])
         let exists = false
-        console.log(`Item ${j}: ${exists}`)
         if (scrubbedData[j] !== undefined) {
             exists = 'destination' in scrubbedData[j]
         }
@@ -48,7 +46,7 @@ async function fetchAll() {
         } 
     }
     //writes the file with all urls included within array
-    fs.writeFile('./db/NASA/data-ProjectDataTEST.json', JSON.stringify(scrubbedData), (err) => {
+    fs.writeFile('./db/NASA/data-ProjectData.json', JSON.stringify(scrubbedData), (err) => {
         //error handling
         if (err) {
             console.log('Failed to write data')
