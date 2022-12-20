@@ -21,20 +21,21 @@ async function fetchAll() {
     )
     
     const resultsUpOneLvl = []
-
-
     for (let i = 0; i < results.length; i++) {      
-        if (results[i].destinations) {
-            results[i].destinations = results[i].destinations.map(item => {
-                item = {
-                    lkuCodeId : item.lkuCodeId,
-                    description : item.description
-                }
-                return item
-            })
-        }
         resultsUpOneLvl.push(results[i].project)
     }
+
+    // for (let j = 0; j < resultsUpOneLvl.length; j++) {
+    //     if (resultsUpOneLvl[j].destinations) {
+    //         resultsUpOneLvl[j].destinations = resultsUpOneLvl[j].destinations.map(item => {
+    //             item = {
+    //                 lkuCodeId : item.lkuCodeId,
+    //                 description : item.description
+    //             }
+    //             return item
+    //         })
+    //     }
+    // }
     
     // for (let i = 0; i < results.length; i++) {      
     //     for (let j = 0; j < results[i].length; j++) {

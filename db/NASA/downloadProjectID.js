@@ -14,5 +14,3 @@ fetch(`${process.env.API_URL1}${process.env.API_KEY}`)
     fs.writeFileSync('./db/NASA/data-ProjectID.json', JSON.stringify(data))
 })
 
-
-
