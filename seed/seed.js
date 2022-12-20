@@ -7,6 +7,16 @@ import Projects from '../models/ProjectModel.js'
 const insertData = async () => {
     //Clear current database
     await db.dropDatabase();
+
+
+
+
+
+
+
+
+    
+    
     //Create database with current data
     await Projects.create(data);
     //Close database connection
