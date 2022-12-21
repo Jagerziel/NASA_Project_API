@@ -3,11 +3,23 @@ import { Router } from "express";
 import projectRoutes from "./projects.js";
 
 //TESTING
-import data from '../db/NASA/data-ProjectData.json' assert { type: "json" }
-import projLength from '../seed/seed.js'
+import seededProjects from '../controllers/toc.js'
 
 //Variable for instance of Express
 const router = Router();
+
+//Variables for page contents and project count
+const pageCountFunc = (data) => {
+  if (data.length > 0) {
+    return Math.floor((data.length - 1) / 10) + 1
+  } 
+  return 0
+}
+let pageCount = pageCountFunc(seededProjects)
+let projCount = seededProjects.length
+
+console.log(projCount)
+console.log(pageCount)
 
 //Setup API Root
 router.get("/", (req, res) => {
@@ -19,29 +31,39 @@ router.get("/", (req, res) => {
   res.end()
 });
 
+//Contents page
 router.get("/:toc", (req, res) => {
   res.setHeader('Content-type','text/html')
   res.write(`<h1>Table of Contents: Page ${req.params.toc}</h1>`);
-  if (req.params.toc == 1) {
-    res.write('TESTING')
+  if (req.params.toc > 0 && req.params.toc == pageCount) {
+    res.write('LAST PAGE')
+    let lastPageProjCount = projCount - (pageCount * 10 - 10)
+    for (let i = 0; i < lastPageProjCount; i++) {
+      res.write(`<p><a href='/api/projects/${seededProjects[i].projectId}'>${i+ req.params.toc * 10 - 9}) ${seededProjects[i].title} (ID: ${seededProjects[i].projectId})</a></p>`)
+    }
+    //Previous Page Link
+    res.write(`<p><a href='/api/${parseInt(req.params.toc) - 1}'>Previous Page</a></p>`)
+    res.end()
+  } else if (req.params.toc > 0 && req.params.toc <= pageCount) {
+    for (let i = 0; i < 10; i++) {
+      res.write(`<p><a href='/api/projects/${seededProjects[i].projectId}'>${i+ req.params.toc * 10 - 9}) ${seededProjects[i].title} (ID: ${seededProjects[i].projectId})</a></p>`)
+    }
+    //Next Page Link
+    res.write(`<p><a href='/api/${parseInt(req.params.toc) + 1}'>Next Page</a></p>`)
+    //Previous Page Link
+    if (req.params.toc != 1) {
+      res.write(`<p><a href='/api/${parseInt(req.params.toc) - 1}'>Previous Page</a></p>`)
+    }
+    
     res.end()
   } else {
-    res.write('Error: Please Enter a Valid Page')
+    res.write('Error: Please Navigate to a Valid Page')
     res.end()
   }
-
-// res.write("<h1>API ROOT: Project Directory</h1>");
-
-// for (let i = 0; i < data.length; i++) {
-//   res.write(`<p><a href='/api/projects/${data[i].projectId}'>${i + 1}) ${data[i].title} (ID: ${data[i].projectId})</a></p>`)
-// }
-// res.end()
 })
 
-console.log(projLength)
 //Setup Router Link to ProjectRoutes
 router.use("/projects", projectRoutes);
-
 
 //Export 
 export default router;

@@ -1,14 +1,8 @@
 //imports
-import mongoose from 'mongoose'
-import db from '../db/connection.js'
 import data from '../db/NASA/data-ProjectData.json' assert { type: 'json' }
-import Projects from '../models/ProjectModel.js'
 
-//Create Function to Insert Data
-const insertData = async () => {
-    //Clear current database
-    await db.dropDatabase();
-    //Scrub data to remove null entries
+
+const projects = () => {
     const scrubbedData = data.filter((notNull)=>{
         return notNull !== null
     })
@@ -25,12 +19,7 @@ const insertData = async () => {
             })
         } 
     }
-    //Create database with current data
-    await Projects.create(scrubbedData);
-    //Close database connection
-    await db.close();
-};
-//Call Function to Insert Data
+    return scrubbedData
+}
 
-insertData();
-
+export default projects()
