@@ -8,12 +8,16 @@ GitHub Link: https://github.com/Jagerziel/NASA_Project_API
 API Root Directory: http://localhost:4000/api/
 The API is sourced from https://api.nasa.gov/
 
+## API Navigation
+
+For convenience, links have been provided to navigate to either all projects or a table of contents where you can select projects individually.
+
 ## Endpoints
 
-To get started, insert one of the following paths into your browser:
-1) Root Path:  http://localhost:4000/**api/**
-2) Projects: http://localhost:4000/api/**projects/**
-3) Projects by ID: http://localhost:4000/api/projects/**11643/**
+To get started, navigate to the root path or insert one of the following paths into your browser:
+1) Root Path:  http://localhost:4000/api/
+2) Projects: http://localhost:4000/api/projects/
+3) Projects by ID: http://localhost:4000/api/projects/:id/
 
 ## Technical Notes
 
