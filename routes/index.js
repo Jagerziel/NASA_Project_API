@@ -1,7 +1,8 @@
 //Imports
 import { Router } from "express";
 import projectRoutes from "./projects.js";
-
+import dotenv from 'dotenv'
+dotenv.config()
 //TESTING
 import seededProjects from '../controllers/toc.js'
 
@@ -23,28 +24,39 @@ console.log(pageCount)
 
 //Setup API Root
 router.get("/", (req, res) => {
-  //TEST CODE
   res.setHeader('Content-type','text/html')
-  //FINAL CODE
-  res.write("API Root");
-  res.write(`<p><a href='/api/1'>NASA Projects TOC - Easy Navigation</a></p>`)
+  res.write(`<h1><b>API Root: Port ${process.env.PORT}</b></h1>`);
+  res.write(`<p><b>Convenient API Navigation Links:</b></p>`);
+  res.write(`<p><a href='/api/Projects'>NASA Projects - Browse All</a></p>`)
+  res.write(`<p><a href='/api/1'>NASA Projects - Browse Individual</a></p>`)
   res.end()
 });
 
+//Setup Router Link to ProjectRoutes
+router.use("/projects", projectRoutes);
+
 //Contents page
 router.get("/:toc", (req, res) => {
+  //Table of Contents Header
   res.setHeader('Content-type','text/html')
-  res.write(`<h1>Table of Contents: Page ${req.params.toc}</h1>`);
   if (req.params.toc > 0 && req.params.toc == pageCount) {
-    res.write('LAST PAGE')
+    //Page Header
+    res.write(`<h1>Table of Contents: Page ${req.params.toc}</h1>`)
     let lastPageProjCount = projCount - (pageCount * 10 - 10)
+    //Provide links to projects up to 10 max
     for (let i = 0; i < lastPageProjCount; i++) {
       res.write(`<p><a href='/api/projects/${seededProjects[i].projectId}'>${i+ req.params.toc * 10 - 9}) ${seededProjects[i].title} (ID: ${seededProjects[i].projectId})</a></p>`)
     }
     //Previous Page Link
     res.write(`<p><a href='/api/${parseInt(req.params.toc) - 1}'>Previous Page</a></p>`)
+    //Return Home Link
+    res.write(`<p><a href='/api/'>Return to API Root</a></p>`)
+
     res.end()
   } else if (req.params.toc > 0 && req.params.toc <= pageCount) {
+    //Page Header
+    res.write(`<h1>Table of Contents: Page ${req.params.toc}</h1>`)
+    //Provide Links to Projects 10 at a Time
     for (let i = 0; i < 10; i++) {
       res.write(`<p><a href='/api/projects/${seededProjects[i].projectId}'>${i+ req.params.toc * 10 - 9}) ${seededProjects[i].title} (ID: ${seededProjects[i].projectId})</a></p>`)
     }
@@ -54,16 +66,19 @@ router.get("/:toc", (req, res) => {
     if (req.params.toc != 1) {
       res.write(`<p><a href='/api/${parseInt(req.params.toc) - 1}'>Previous Page</a></p>`)
     }
-    
+    //Return Home Link
+    res.write(`<p><a href='/api/'>Return to API Root</a></p>`)
+
     res.end()
   } else {
-    res.write('Error: Please Navigate to a Valid Page')
+    //Error Handling
+    res.write(`<h1>Error: Please Navigate to a Valid Page</h1>`)
+    //Return Home Link
+    res.write(`<p><a href='/api/'>Return to API Root</a></p>`)
+
     res.end()
   }
 })
-
-//Setup Router Link to ProjectRoutes
-router.use("/projects", projectRoutes);
 
 //Export 
 export default router;

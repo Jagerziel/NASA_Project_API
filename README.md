@@ -98,11 +98,9 @@ const scrubbedData = data.filter((notNull)=>{
 
 ## Future Features
 
-- Interactive (linked) navigation
 - User Authentication
-- User Suggested Additional Navigation
 - HTML Interface/Structured Data Output 
-- Add writable files/entries for Future Projects
+- Add writable project/entries for Future Projects
 
 
 

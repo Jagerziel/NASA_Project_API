@@ -1,8 +1,9 @@
 //imports
 import data from '../db/NASA/data-ProjectData.json' assert { type: 'json' }
 
-
+//Create database duplicate for use on Table of Contents pages
 const projects = () => {
+    //Remove Null entries
     const scrubbedData = data.filter((notNull)=>{
         return notNull !== null
     })
@@ -21,5 +22,5 @@ const projects = () => {
     }
     return scrubbedData
 }
-
+//Export
 export default projects()
