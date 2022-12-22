@@ -7,9 +7,8 @@ dotenv.config()
 
 //variables
 const app = express();
-// const PORT = process.env.MONGO_PORT || process.env.LOCAL_PORT;
-const PORT = process.env.LOCAL_PORT;
-
+const PORT = process.env.MONGO_PORT || process.env.LOCAL_PORT;
+// const PORT = process.env.LOCAL_PORT;
 
 //Uses
 app.use(express.json());

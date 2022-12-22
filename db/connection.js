@@ -9,8 +9,9 @@ mongoose.set('strictQuery', true)
 
 //Connect
 
-const url = 'mongodb://localhost:27017/lists'
-// const url = process.env.MONGO_URL || 'mongodb://localhost:27017/lists'
+// const url = 'mongodb://localhost:27017/NASA_API'
+const url = process.env.MONGO_URL || 'mongodb://localhost:27017/NASA_API'
+
 mongoose.connect(url, mongooseConnectionConfig)
 
 mongoose.connection.on('connected', ()=> console.log("Connected to database"))
