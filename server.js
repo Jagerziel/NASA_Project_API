@@ -7,7 +7,7 @@ dotenv.config()
 
 //variables
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || process.env.LOCAL_PORT;
 
 //Uses
 app.use(express.json());
@@ -19,7 +19,7 @@ db.on("connected", () => {
   console.log("Connected to MongoDB");
   app.listen(PORT, () => {
     console.log(
-      `Express server is running in development on http://localhost:${PORT}`
+      `Express server is running in development on port: ${PORT}`
     );
   });
 });
