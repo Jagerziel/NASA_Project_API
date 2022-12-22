@@ -12,6 +12,19 @@ The API is sourced from https://api.nasa.gov/
 
 For convenience, links have been provided to navigate to either all projects or a table of contents where you can select projects individually.
 
+### ***Root API Screenshot***
+
+![API Root](./README_Images/API_Root_Screenshot.png)
+
+### ***API Project Navigation***
+
+![API Project Navigation](./README_Images/API_ProjectNav_Screenshot.png)
+
+### ***API All Projects JSON***
+
+![API All Projects JSON](./README_Images/API_All-Projects_JSON.png)
+
+
 ## Endpoints
 
 To get started, navigate to the root path or insert one of the following paths into your browser:
