@@ -55,7 +55,7 @@ router.get("/:toc", (req, res) => {
     res.write(`<h1>Table of Contents: Page ${req.params.toc}</h1>`)
     //Provide Links to Projects 10 at a Time
     for (let i = 0; i < 10; i++) {
-      res.write(`<p><a href='/api/projects/${seededProjects[i].projectId}'>${i+ req.params.toc * 10 - 9}) ${seededProjects[i].title} (ID: ${seededProjects[i].projectId})</a></p>`)
+      res.write(`<p><a href='/api/projects/${seededProjects[i].projectId}'>${i+ req.params.toc * 10 - 9}) ${seededProjects[i + pageCount * 10].title} (ID: ${seededProjects[i + pageCount * 10].projectId})</a></p>`)
     }
     //Next Page Link
     res.write(`<p><a href='/api/${parseInt(req.params.toc) + 1}'>Next Page</a></p>`)

@@ -5,7 +5,7 @@
 The NASA Projects API allows you to dynamically view a subset of missions undertaken by NASA detailing the mission description, planets visited, and the mission dates/duration.
 
 - GitHub Link: https://github.com/Jagerziel/NASA_Project_API
-- Railway Link: https://nasaprojectapi-production.up.railway.app/
+- Railway Link: https://nasaprojectapi-production.up.railway.app/api/
 - API Root Directory: http://localhost:4000/api/
 - The API is sourced from https://api.nasa.gov/
 
