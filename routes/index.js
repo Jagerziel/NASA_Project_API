@@ -3,7 +3,7 @@ import { Router } from "express";
 import projectRoutes from "./projects.js";
 import dotenv from 'dotenv'
 dotenv.config()
-//TESTING
+//TOC
 import seededProjects from '../controllers/toc.js'
 
 //Variable for instance of Express
@@ -18,9 +18,6 @@ const pageCountFunc = (data) => {
 }
 let pageCount = pageCountFunc(seededProjects)
 let projCount = seededProjects.length
-
-console.log(projCount)
-console.log(pageCount)
 
 //Setup API Root
 router.get("/", (req, res) => {

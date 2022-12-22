@@ -25,7 +25,7 @@ async function fetchAll() {
         resultsUpOneLvl.push(results[i].project)
     }
     //writes the file with all urls included within array
-    fs.writeFile('./db/NASA/data-ProjectData.json', JSON.stringify(scrubbedData), (err) => {
+    fs.writeFile('./db/NASA/data-ProjectData.json', JSON.stringify(resultsUpOneLvl), (err) => {
         //error handling
         if (err) {
             console.log('Failed to write data')
