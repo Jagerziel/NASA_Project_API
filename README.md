@@ -77,6 +77,7 @@ Use fetched IDs to write file of JSON objects.  The data needed to be cleansed a
     ID: Number
 }
 ```
+
 2) After removing the first layer, the data was modeled to include only the following:
 ```
 const dataNASA = new Schema({
