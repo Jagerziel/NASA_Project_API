@@ -57,9 +57,10 @@ export const getProjects = async (req, res) => {
   export const deleteProject = async (req, res) => {
     try {
       const { id } = req.params;
-      const deleted = await Projects.deleteOne({projectId : id});
-  
-      if (deleted) {
+      const project = await Projects.findOneAndDelete({projectId : id});
+
+      if (project) {
+        res.status(201).json(project)
         return res.status(200).send("Project removed from database");
       }
   
