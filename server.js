@@ -2,6 +2,7 @@
 import db from "./db/connection.js";
 import express from "express";
 import routes from "./routes/index.js";
+import cors from 'cors'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -13,6 +14,7 @@ const PORT = process.env.PORT || process.env.LOCAL_PORT;
 //Uses
 app.use(express.json());
 app.use("/api", routes);
+app.use(cors)
 
 //db connection
 db.on("connected", () => {
